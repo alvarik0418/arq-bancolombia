@@ -5,6 +5,7 @@ import co.com.bancolombia.model.box.gateways.BoxRepository;
 import co.com.bancolombia.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Repository
@@ -33,4 +34,7 @@ public class MongoRepositoryAdapter extends AdapterOperations<Box, BoxData, Stri
         return repository.save(boxObject).map(this::toEntity);
     }
 
+   public Flux<Box> findAll(){
+        return repository.findAll().map(this::toEntity);
+    }
 }

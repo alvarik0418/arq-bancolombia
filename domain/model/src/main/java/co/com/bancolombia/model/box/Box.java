@@ -160,6 +160,24 @@ public class Box {
         this.openedAt = LocalDateTime.now();
     }
 
+    public void reopen(){
+        if (status != BoxStatus.CLOSED && closedAt == null){
+            throw new IllegalStateException("La caja debe estar cerrada previamente");
+        }
+
+        this.status = BoxStatus.OPENED;
+        this.openedAt = LocalDateTime.now();
+        this.closedAt = null;
+    }
+
+    public void delete(){
+        if (status == BoxStatus.DELETED){
+            throw new IllegalStateException("La caja ya está eliminada");
+        }
+
+        this.status = BoxStatus.DELETED;
+    }
+
     public void close(BigDecimal closingAmount) {
         if (status != BoxStatus.OPENED) {
             throw new IllegalStateException("La caja no está abierta");
@@ -185,7 +203,4 @@ public class Box {
         }
         this.currentBalance = this.currentBalance.subtract(amount);
     }
-
-
-
 }

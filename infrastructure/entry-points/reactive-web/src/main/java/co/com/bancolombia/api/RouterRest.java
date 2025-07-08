@@ -12,8 +12,13 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouterRest {
     @Bean
     public RouterFunction<ServerResponse> routerFunction(Handler handler) {
-        return route(PUT("/api/close"), handler::close)
-                .andRoute(PUT("/api/open"), handler::open)
-                .and(route(POST("/api"), handler::createBox));
+        return route(PUT("/api/{id}/close"), handler::close)
+                .andRoute(PUT("/api/{id}/open"), handler::open)
+                .andRoute(PATCH("/api/{id}"), handler::updateBoxName)
+                .andRoute(PUT("/api/{id}/reopen"), handler::reopen)
+                .and(route(POST("/api"), handler::createBox))
+                .and(route(DELETE("/api/{id}"), handler::deleteBox))
+                .and(route(GET("/api/{id}"), handler::getBoxById))
+                .and(route(GET("/api"), handler::listAllBox));
     }
 }

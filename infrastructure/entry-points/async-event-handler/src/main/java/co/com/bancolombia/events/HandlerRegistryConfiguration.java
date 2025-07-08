@@ -11,6 +11,9 @@ public class HandlerRegistryConfiguration {
     @Bean
     public HandlerRegistry handlerRegistry(EventsHandler events) {
         return HandlerRegistry.register()
-                .listenEvent("box.event.created", events::handleEventA, Object.class);
+                .listenEvent("box.event.created", events::handleEventA, Object.class)
+                .listenEvent("box.event.nameupdated", events::handleEventA, Object.class)
+                .listenEvent("box.event.deleted", events::handleEventA, Object.class)
+                .listenEvent("box.event.reopened", events::handleEventA, Object.class);
     }
 }

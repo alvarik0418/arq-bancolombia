@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8085
 spring:
   application:
     name: "OpenBox"
@@ -13,13 +13,13 @@ spring:
     include: null
   data:
     mongodb:
-      uri: mongodb+srv://admin:admin@cluster0.bkkmgbg.mongodb.net/banking
+      uri: #urlDataBaseMongo
   rabbitmq:
-    host: possum.lmq.cloudamqp.com
+    host: #hostname
     port: 5671
-    username: gkqkhzcd
-    password: yy3Nr2UtxRl9u0b0SFQ4pmJEjMlQxI7O
-    virtual-host: gkqkhzcd
+    username: #username
+    password: #password
+    virtual-host: #hostname
     ssl:
       enabled: true
 management:

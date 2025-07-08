@@ -13,7 +13,6 @@ public class OpenBoxUseCase {
         this.boxRepository = boxRepository;
     }
 
-
     public Mono<Box> openBox(String boxId, BigDecimal openingAmount) {
         return boxRepository.findById(boxId)
                 .flatMap(box -> {
